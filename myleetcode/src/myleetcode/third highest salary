@@ -1,0 +1,31 @@
+package leet;
+
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+public class Demo {
+
+	public static void main(String[] args) {
+		//list<Employee> we have to find 3rd largest emp obj and return it
+		
+		List<Employee> employees = Arrays.asList(new Employee(1, "pawan", 50000),
+				new Employee(2, "david", 25000),
+				new Employee(3, "test", 5000),
+				new Employee(4, "bob", 70000),
+				new Employee(3, "test", 25000),
+				new Employee(3, "case", 25000));
+		
+		Map<Double, List<Employee>> salaryGroups = employees.stream().collect(Collectors.groupingBy(Employee::getSalary));			
+		List<Double> sortedList = salaryGroups.keySet().stream().sorted(Comparator.reverseOrder()).collect(Collectors.toList());
+		if(sortedList.size() >= 3) {
+			double thirdHighestSalary = sortedList.get(2);
+			List<Employee> thirdHighestSalaryEmployees = salaryGroups.get(thirdHighestSalary);
+			thirdHighestSalaryEmployees.forEach(System.out::println);
+		}
+
+	}
+
+}
