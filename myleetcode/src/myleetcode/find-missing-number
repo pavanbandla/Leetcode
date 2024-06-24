@@ -1,0 +1,21 @@
+package leet;
+
+public class MissingNumber {
+
+	public static void main(String[] args) {
+		int arr[] = new int[] { 0, 1, 3 };
+		System.out.println(solution(arr));
+
+	}
+
+	private static int solution(int[] arr) {
+
+		int result = (arr.length * arr.length + arr.length) / 2;
+		for (int i = 0; i < arr.length; i++) {
+			result = result - arr[i];
+		}
+
+		return result;
+
+	}
+}
