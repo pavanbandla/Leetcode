@@ -1,0 +1,11 @@
+package leet;
+public class SqrtEasy {
+	public static void main(String[] args) {
+		int x = 21;
+		System.out.println(sqrt(x));
+	}
+	private static int sqrt(int x) {
+		return (int)Math.floor(Math.sqrt(x));
+	}
+
+}
