@@ -13,7 +13,6 @@ public class FindTargetIndices {
 		System.out.println(solution(nums, target));
 
 	}
-
 	private static List<Integer> solution(int[] nums, int target) {
 
 		int belowNumbers = 0;
