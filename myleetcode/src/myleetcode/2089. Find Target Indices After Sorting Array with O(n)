@@ -1,0 +1,34 @@
+package leet;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class FindTargetIndices {
+
+	public static void main(String[] args) {
+
+		int nums[] = new int[] { 1, 2, 5, 2, 3 };
+		int target = 2;
+		System.out.println(solution(nums, target));
+
+	}
+
+	private static List<Integer> solution(int[] nums, int target) {
+
+		int belowNumbers = 0;
+		int targetNumbers = 0;
+		for (int i : nums) {
+			if (i < target) {
+				belowNumbers++;
+			} else if (i == target) {
+				targetNumbers++;
+			}
+		}
+		List<Integer> list = new ArrayList<>();
+		for (int x = 0; x < targetNumbers; x++)
+			list.add(belowNumbers++);
+		return list;
+	}
+
+}
