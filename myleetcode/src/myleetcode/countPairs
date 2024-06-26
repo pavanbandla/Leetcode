@@ -1,0 +1,32 @@
+package leet;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class CountPairs {
+	public static void main(String[] args) {
+		List<Integer> list = new ArrayList<>();
+		list.add(-1);
+		list.add(1);
+		list.add(2);
+		list.add(3);
+		list.add(1);
+		int target = 2;
+		System.out.println(solution(list, target));
+	}
+	
+	private static int solution(List<Integer> nums, int target) {
+		Collections.sort(nums);
+		int left = 0;
+		int right = nums.size() - 1;
+		int count = 0;
+		while (left < right) {
+			if (nums.get(left) + nums.get(right) < target) {
+				count += right - left;
+				left++;
+			} else
+				right--;
+		}
+		return count;
+	}
+}
