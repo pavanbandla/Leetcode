@@ -1,26 +1,24 @@
+class Solution {
+public int[] kWeakestRows(int[][] mat, int k) {
     int rows = mat.length;
     int cols = mat[0].length;
+    int[] resultArray = new int[k];
+    int[] scores = new int[rows];
 
-    int[] score = new int[rows];
-    for (int i = 0; i < rows; i++) {
-        int ones=0;
-        for (int j=0; j < cols; j++) {
-            if (mat[i][j] == 0) {
+    for(int i=0; i<rows; i++){
+        int oneCount=0;
+        for(int j=0; j<mat[i].length; j++){
+            if(mat[i][j] == 0){
                 break;
             }
-        ones++;
+            oneCount++;
         }
-        score[i] = ones* rows + i;
+        scores[i] = oneCount * rows + i;
     }
- Arrays.sort(score);
-    for (int i = 0; i < score.length; i++) {
-        score[i] = score[i] % rows;
+    Arrays.sort(scores);
+    for(int i=0; i<k; i++ ){
+        resultArray[i] = scores[i] % rows;
     }
-       int[] ans = new int[k];
-   for(int i=0;i<k;i++)
-   {
-       ans[i]=score[i];
-       
-   }
-return ans;
-   }
+    return resultArray;
+  }
+ }
